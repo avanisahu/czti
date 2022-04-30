@@ -4,13 +4,15 @@ hdu=fits.open(dataset)
 from matplotlib import pyplot as plt
 import numpy as np
 
-for i in range(1,5):
-	x=hdu[i].data["TIME"]
-	a = np.array([4]) 
-	fig = plt.subplot( 2, 3, i)
 
+for i in range(1,5):
+	plt.subplot(2, 2, i)
+	x=hdu[i].data["TIME"]
+	a = np.arange(5)
+	hist, bin_edges = np.histogram(a, density=True)
+	
 	import math
 	w = 25
 	n = math.ceil((x.max() - x.min())/w)
 	ax = plt.hist(x, bins = n)
-	plt.show()
+	plt.show()		
